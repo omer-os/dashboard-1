@@ -12,7 +12,7 @@ export default function MainLayout({
     <div className="h-lvh flex md:flex-row flex-col">
       <MainNavbar />
       <MainSidebar />
-      <div className="flex-1 overflow-auto">{children}</div>
+      <div className="flex-1 pb-20 md:pb-0 overflow-auto">{children}</div>
 
       <BottomAppBar />
     </div>

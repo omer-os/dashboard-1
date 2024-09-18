@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { useClickAway } from "@uidotdev/usehooks";
+import AddClientDialog from "../dialogs/add-client-dialog";
 
 interface Client {
   id: number;
@@ -242,6 +243,12 @@ const ClientsTable: React.FC = () => {
               Clear Filters
             </button>
           )}
+
+          <AddClientDialog onAddClient={(client) => {}}>
+            <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out">
+              Add New Client
+            </button>
+          </AddClientDialog>
         </div>
       </div>
 
@@ -259,7 +266,7 @@ const ClientsTable: React.FC = () => {
               ].map((key) => (
                 <th
                   key={key}
-                  className="p-4 text-left cursor-pointer hover:bg-zinc-600/30 transition duration-300 ease-in-out"
+                  className="p-4 text-left w-max cursor-pointer hover:bg-zinc-600/30 transition duration-300 ease-in-out"
                   onClick={() => handleSort(key as SortKey)}
                 >
                   <div className="flex items-center">
@@ -289,12 +296,14 @@ const ClientsTable: React.FC = () => {
                   index % 2 === 0 ? "bg-zinc-800/30" : "bg-zinc-800/10"
                 }`}
               >
-                <td className="p-4">{client.name}</td>
-                <td className="p-4">{client.email}</td>
-                <td className="p-4">{client.phone}</td>
-                <td className="p-4">{client.projectCount}</td>
-                <td className="p-4">${client.totalBudget.toLocaleString()}</td>
-                <td className="p-4">{client.lastProjectDate}</td>
+                <td className="w-20 truncate p-4">{client.name}</td>
+                <td className="w-20 truncate p-4">{client.email}</td>
+                <td className="w-20 truncate p-4">{client.phone}</td>
+                <td className="w-20 truncate p-4">{client.projectCount}</td>
+                <td className="w-20 truncate p-4">
+                  ${client.totalBudget.toLocaleString()}
+                </td>
+                <td className="w-20 truncate p-4">{client.lastProjectDate}</td>
               </tr>
             ))}
           </tbody>

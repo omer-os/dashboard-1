@@ -11,6 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { useClickAway } from "@uidotdev/usehooks";
+import AddProjectDialog from "../dialogs/add-project-dialog";
 
 interface Project {
   id: number;
@@ -253,6 +254,12 @@ const ProjectsTable: React.FC = () => {
               </button>
             </div>
           ) : null}
+
+          <AddProjectDialog onAddProject={(project) => {}}>
+            <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out">
+              Add New Project
+            </button>
+          </AddProjectDialog>
         </div>
       </div>
 
@@ -289,9 +296,9 @@ const ProjectsTable: React.FC = () => {
                   index % 2 === 0 ? "bg-zinc-800/30" : "bg-zinc-800/10"
                 }`}
               >
-                <td className="p-4">{project.name}</td>
-                <td className="p-4">{project.client}</td>
-                <td className="p-4">
+                <td className="p-4 w-20 truncate">{project.name}</td>
+                <td className="p-4 w-20 truncate">{project.client}</td>
+                <td className="p-4 w-20 truncate">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium
                     ${
@@ -305,8 +312,10 @@ const ProjectsTable: React.FC = () => {
                     {project.status}
                   </span>
                 </td>
-                <td className="p-4">{project.startDate}</td>
-                <td className="p-4">${project.budget.toLocaleString()}</td>
+                <td className="p-4 w-20 truncate">{project.startDate}</td>
+                <td className="p-4 w-20 truncate">
+                  ${project.budget.toLocaleString()}
+                </td>
               </tr>
             ))}
           </tbody>
