@@ -1,15 +1,23 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Home, Box, Users, Grid, MoreHorizontal } from "lucide-react";
+import {
+  Home,
+  Box,
+  Users,
+  Grid,
+  MoreHorizontal,
+  Users2,
+  ShoppingBag,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const appBarItems = [
   { name: "Dashboard", href: "/", Icon: Home },
   { name: "Projects", href: "/projects", Icon: Box },
-  { name: "Clients", href: "/clients", Icon: Users },
-  { name: "Apps", href: "/apps", Icon: Grid },
+  { name: "Clients", href: "/clients", Icon: ShoppingBag },
+  { name: "Team", href: "/team", Icon: Users2 },
   { name: "More", href: "/more", Icon: MoreHorizontal },
 ];
 

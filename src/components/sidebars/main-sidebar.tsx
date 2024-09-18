@@ -7,6 +7,7 @@ import {
   FileText,
   Settings,
   HelpCircle,
+  ShoppingBag,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -21,7 +22,7 @@ const sidebarItems = [
   {
     name: "Clients",
     href: "/clients",
-    Icon: Users,
+    Icon: ShoppingBag,
   },
   {
     name: "Projects",
@@ -29,9 +30,9 @@ const sidebarItems = [
     Icon: Palette,
   },
   {
-    name: "Appointments",
-    href: "/appointments",
-    Icon: Calendar,
+    name: "Team",
+    href: "/team",
+    Icon: Users,
   },
   {
     name: "Invoices",
