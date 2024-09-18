@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useClickAway } from "@uidotdev/usehooks";
 import AddProjectDialog from "../dialogs/add-project-dialog";
+import Link from "next/link";
 
 interface Project {
   id: number;
@@ -267,25 +268,30 @@ const ProjectsTable: React.FC = () => {
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-gradient-to-r from-zinc-800 to-zinc-700 text-zinc-300">
-              {["name", "client", "status", "startDate", "budget"].map(
-                (key) => (
-                  <th
-                    key={key}
-                    className="p-4 text-left cursor-pointer hover:bg-zinc-600/30 transition duration-300 ease-in-out"
-                    onClick={() => handleSort(key as SortKey)}
-                  >
-                    <div className="flex items-center">
-                      {key.charAt(0).toUpperCase() + key.slice(1)}
-                      {sortKey === key &&
-                        (sortOrder === "asc" ? (
-                          <SortAsc size={16} className="ml-2" />
-                        ) : (
-                          <SortDesc size={16} className="ml-2" />
-                        ))}
-                    </div>
-                  </th>
-                )
-              )}
+              {[
+                "name",
+                "client",
+                "status",
+                "startDate",
+                "budget",
+                "action",
+              ].map((key) => (
+                <th
+                  key={key}
+                  className="p-4 text-left cursor-pointer hover:bg-zinc-600/30 transition duration-300 ease-in-out"
+                  onClick={() => handleSort(key as SortKey)}
+                >
+                  <div className="flex items-center">
+                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                    {sortKey === key &&
+                      (sortOrder === "asc" ? (
+                        <SortAsc size={16} className="ml-2" />
+                      ) : (
+                        <SortDesc size={16} className="ml-2" />
+                      ))}
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -315,6 +321,13 @@ const ProjectsTable: React.FC = () => {
                 <td className="p-4 w-20 truncate">{project.startDate}</td>
                 <td className="p-4 w-20 truncate">
                   ${project.budget.toLocaleString()}
+                </td>
+                <td className="p-4 w-20 truncate">
+                  <Link passHref href={`/projects/${project.id}`}>
+                    <button className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition duration-300 ease-in-out">
+                      View
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}

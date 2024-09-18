@@ -55,7 +55,10 @@ export default function InteriorDesignSidebar() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    return pathname === href;
+    if (href === "/") {
+      return pathname === href;
+    }
+    return pathname.startsWith(href);
   };
 
   return (
