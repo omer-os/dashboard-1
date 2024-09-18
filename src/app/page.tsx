@@ -8,7 +8,7 @@ import TopDesignersTable from "@/components/tables/top-designers-table";
 
 export default function Page() {
   return (
-    <div className="p-6 bg-zinc-900 min-h-screen">
+    <div className="p-6">
       <h1 className="text-3xl font-bold text-zinc-100 mb-2">Dashboard</h1>
       <p className="text-zinc-400 mb-6">
         Overview of your interior design business

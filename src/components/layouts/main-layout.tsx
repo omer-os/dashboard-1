@@ -12,7 +12,9 @@ export default function MainLayout({
     <div className="h-lvh flex md:flex-row flex-col">
       <MainNavbar />
       <MainSidebar />
-      <div className="flex-1 pb-20 md:pb-0 overflow-auto">{children}</div>
+      <div className="flex-1 pb-20 md:pb-0 overflow-auto bg-zinc-900 md:mt-2 md:me-2 md:rounded-t-xl md:border border-b-0 border-zinc-700">
+        {children}
+      </div>
 
       <BottomAppBar />
     </div>
