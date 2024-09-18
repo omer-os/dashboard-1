@@ -1,38 +1,29 @@
+"use client";
 import React from "react";
+import ProjectsTable from "@/components/tables/projects-table";
+import StatCards from "@/components/cards/stat-cards";
+import ClientAcquisitionChart from "@/components/charts/client-acquisition-chart";
+import RevenueChart from "@/components/charts/revenue-chart";
+import TopDesignersTable from "@/components/tables/top-designers-table";
 
 export default function Page() {
   return (
-    <div className="p-4">
-      <div className="text-emphasis font-bold text-xl">Simple Analytics</div>
-      <p className="text-zinc-400">Simple Analytics page for your company.</p>
+    <div className="p-6 bg-zinc-900 min-h-screen">
+      <h1 className="text-3xl font-bold text-zinc-100 mb-2">Dashboard</h1>
+      <p className="text-zinc-400 mb-6">
+        Overview of your interior design business
+      </p>
 
-      <div className="grid mt-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          {
-            title: "Total Clients",
-            value: "150",
-          },
-          {
-            title: "Ongoing Projects",
-            value: "12",
-          },
-          {
-            title: "Upcoming Projects",
-            value: "8",
-          },
-          {
-            title: "Total Revenue",
-            value: "$50,000",
-          },
-        ].map((i, index) => (
-          <div
-            key={index}
-            className="bg-zinc-800 p-6 rounded-lg shadow-md border border-zinc-700"
-          >
-            <h3 className="text-lg font-semibold mb-2">{i.title}</h3>
-            <p className="text-3xl font-bold">{i.value}</p>
-          </div>
-        ))}
+      <StatCards />
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <RevenueChart />
+        <ClientAcquisitionChart />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* <ProjectsTable /> */}
+        <TopDesignersTable />
       </div>
     </div>
   );
