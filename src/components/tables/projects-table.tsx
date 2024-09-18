@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, LegacyRef } from "react";
 import {
   Search,
   Filter,
@@ -10,6 +10,7 @@ import {
   Calendar,
   X,
 } from "lucide-react";
+import { useClickAway } from "@uidotdev/usehooks";
 
 interface Project {
   id: number;
@@ -118,6 +119,9 @@ const ProjectsTable: React.FC = () => {
   });
   const [showDatePicker, setShowDatePicker] = useState(false);
   const itemsPerPage = 5;
+  const DatePickerRef = useClickAway(() => {
+    setShowDatePicker(false);
+  }) as LegacyRef<HTMLDivElement>;
 
   useEffect(() => {
     let filtered = initialProjects.filter(
@@ -199,7 +203,10 @@ const ProjectsTable: React.FC = () => {
               Date Filter
             </button>
             {showDatePicker && (
-              <div className="absolute end-0 top-full mt-2 p-4 bg-zinc-800 border border-zinc-600 rounded-lg shadow-xl z-10">
+              <div
+                ref={DatePickerRef}
+                className="absolute end-0 top-full mt-2 p-4 bg-zinc-800 border border-zinc-600 rounded-lg shadow-xl z-10"
+              >
                 <input
                   type="date"
                   value={dateRange.start}
